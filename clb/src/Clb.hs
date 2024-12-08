@@ -554,7 +554,7 @@ txInlineDatums txb =
   let C.TxBodyContent {txOuts} = C.getTxBodyContent txb
       inlineDatums = flip mapMaybe txOuts $
         \(C.TxOut _ _ d _) -> case d of
-          C.TxOutSupplementalDatum _ sd -> Just sd
+          C.TxOutDatumInTx _ sd -> Just sd
           C.TxOutDatumInline _ sd -> Just sd
           _ -> Nothing
       datums =
